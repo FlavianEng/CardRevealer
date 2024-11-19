@@ -1,19 +1,19 @@
-//
-//  ContentView.swift
-//  CardRevealer
-//
-//  Created by Flavian Engevin on 18/11/2024.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = NFCViewModel()
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Spacer()
+            Text(viewModel.scanMessage)
+
+            Spacer()
+            Button("Start Scanning") {
+                viewModel.startScanning()
+            }
+            .buttonStyle(.borderedProminent)
+            Spacer()
         }
         .padding()
     }
